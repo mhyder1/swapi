@@ -5,25 +5,29 @@ import ReactDOM from 'react-dom';
 export default class Profile extends React.Component {
     constructor(props) {
       super(props);
-       
-      };
+
+      this.state = {
+        // "DataSource" is some global data source
+     //   comments: DataSource.getComments()
+      }
+      }
     
     componentDidMount() {
       // Subscribe to changes
-   //   DataSource.addChangeListener(this.handleChange);
-    }
+      //   DataSource.addChangeListener(this.handleChange);
+    }; 
   
    
     handleChange() {
-      // Update component state whenever the data source changes
+    // Update component state whenever the data source changes
     //   this.setState({
     //     comments: DataSource.getComments()
     //   });
-    }
+    }; 
   
     render(){
       return (
-        <div className="profile-container" >
+        <div className="profile-container">
           <h1>Profile</h1>
         </div>
       ); 
