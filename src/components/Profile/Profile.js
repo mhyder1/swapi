@@ -24,9 +24,7 @@ export default class Profile extends React.Component {
     render(){
       return (
         <div className="profile-container" >
-          {this.state.comments.map((comment) => (
-            <Comment comment={comment} key={comment.id} />
-          ))}
+          <h1>Profile</h1>
         </div>
       ); 
     }
