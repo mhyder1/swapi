@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 //import './Films.css';
 
 function Films() {

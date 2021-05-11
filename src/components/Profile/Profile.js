@@ -2,13 +2,24 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 //import './Profile.css';
 
+//components
+import CharacterMeta from '../CharacterMeta/CharacterMeta'
+//import CharacterMeta from '../CharacterMeta/CharacterMeta'
+//import CharacterMeta from '../CharacterMeta/CharacterMeta'
+//import CharacterMeta from '../CharacterMeta/CharacterMeta'
+//import CharacterMeta from '../CharacterMeta/CharacterMeta'
+
 export default class Profile extends React.Component {
     constructor(props) {
       super(props);
 
       this.state = {
-        // "DataSource" is some global data source
-     //   comments: DataSource.getComments()
+      // "DataSource" is some global data source
+      // characterMeta:  example,
+      // films:  example,
+      // starShip: example,
+       
+
       }
       }
     
@@ -21,7 +32,7 @@ export default class Profile extends React.Component {
     handleChange() {
     // Update component state whenever the data source changes
     //   this.setState({
-    //     comments: DataSource.getComments()
+    //     films: someDataSource
     //   });
     }; 
   
@@ -29,6 +40,7 @@ export default class Profile extends React.Component {
       return (
         <div className="profile-container">
           <h1>Profile</h1>
+          <CharacterMeta/>
         </div>
       ); 
     }
