@@ -1,47 +1,67 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import axios from 'axios';
+
 //import './Profile.css';
 
 //components
 import CharacterMeta from '../CharacterMeta/CharacterMeta'
-//import CharacterMeta from '../CharacterMeta/CharacterMeta'
-//import CharacterMeta from '../CharacterMeta/CharacterMeta'
-//import CharacterMeta from '../CharacterMeta/CharacterMeta'
-//import CharacterMeta from '../CharacterMeta/CharacterMeta'
+import StarShip from '../StarShip/StarShip'
+import Films from '../Films/Films'
+
 
 export default class Profile extends React.Component {
-    constructor(props) {
-      super(props);
+  constructor(props) {
+    super(props);
 
-      this.state = {
-      // "DataSource" is some global data source
-      // characterMeta:  example,
-      // films:  example,
-      // starShip: example,
-       
-
-      }
-      }
-    
-    componentDidMount() {
-      // Subscribe to changes
-      //   DataSource.addChangeListener(this.handleChange);
-    }; 
-  
-   
-    handleChange() {
-    // Update component state whenever the data source changes
-    //   this.setState({
-    //     films: someDataSource
-    //   });
-    }; 
-  
-    render(){
-      return (
-        <div className="profile-container">
-          <h1>Profile</h1>
-          <CharacterMeta/>
-        </div>
-      ); 
+    this.state = {
+      characterMeta: {},
+      films: {},
+      starshipData: {}
     }
+  }
+
+  componentDidMount() {
+
+    this.fetchData()
+  };  
+
+    
+  async fetchData() {
+    console.log("Async message ");
+    try {
+
+      let swapi_url = "http://swapi.dev/api/people/22/";
+      //
+      const response = await axios.get(swapi_url);
+      //response.data.films
+      const responsefilms = await axios.get(response.data.films[0]);
+      const responseStarship = await axios.get(response.data.starships[0]);
+
+      //setState for all keys 
+      this.setState({ 
+        ...this.state, 
+        characterMeta: response.data, 
+        films: responsefilms.data, 
+        starshipData: responseStarship.data 
+      });
+
+    } catch (e) {
+      console.log(e);
+
+    }
+  };
+
+  render() {
+    return (
+      <div className="profile-container">
+        <h1>Profile</h1>
+        <CharacterMeta 
+          CharacterMetaData={this.state.characterMeta}
+         />
+         <StarShip starshipDataProps={this.state.starshipData} />
+         <Films  filmsData={this.state.films} />
+      </div>
+    );
+  }
 }
