@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-
+import './Profile.css';
 //components
 import CharacterMeta from '../CharacterMeta/CharacterMeta'
 import StarShip from '../StarShip/StarShip'
@@ -31,6 +31,8 @@ export default class Profile extends React.Component {
 
       let swapi_url = "http://swapi.dev/api/people/22/";
       //
+      
+     
       const response = await axios.get(swapi_url);
       //response.data.films
       const responsefilms = await axios.get(response.data.films[0]);
@@ -54,9 +56,13 @@ export default class Profile extends React.Component {
     return (
       <div className="profile-container">
         <h1>Profile</h1>
+        <div className="img-container" ><h1>IMAGE CONTAINER</h1></div>
+        <div className="info-container" > 
         <CharacterMeta CharacterMetaData={this.state.characterMeta}/>
          <StarShip starshipDataProps={this.state.starshipData} />
          <Films  filmsData={this.state.films} />
+        </div>
+        
       </div>
     );
   }

@@ -22,7 +22,7 @@ const styles = {
     height: '50%',
     margin: 'auto',
     position: 'relative',
-    width: '20%',
+    width: '50%',
     border: '5px white solid'
   }
 }
