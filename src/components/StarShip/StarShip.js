@@ -2,7 +2,7 @@
 
 function StarShip(props) {
   return (
-    <div className="star-ship-container">
+    <div className="star-ship-container" style={styles.card}>
       
         <h1>StarShip</h1>
         <p>Name: { props.starshipDataProps.name}</p>
@@ -11,3 +11,18 @@ function StarShip(props) {
 }
 
 export default StarShip;
+
+
+const styles = {
+  card: {
+    padding: '1%',
+    background: "#eee",
+    borderRadius: '25px',
+    display: 'inlineBlock',
+    height: '50%',
+    margin: 'auto',
+    position: 'relative',
+    width: '20%',
+    border: '5px white solid'
+  }
+}

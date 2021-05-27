@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 
-//import './Profile.css';
-
 //components
 import CharacterMeta from '../CharacterMeta/CharacterMeta'
 import StarShip from '../StarShip/StarShip'
@@ -56,12 +54,11 @@ export default class Profile extends React.Component {
     return (
       <div className="profile-container">
         <h1>Profile</h1>
-        <CharacterMeta 
-          CharacterMetaData={this.state.characterMeta}
-         />
+        <CharacterMeta CharacterMetaData={this.state.characterMeta}/>
          <StarShip starshipDataProps={this.state.starshipData} />
          <Films  filmsData={this.state.films} />
       </div>
     );
   }
 }
+
