@@ -1,0 +1,16 @@
+div.img-container{
+    float: right;
+    width: 40%;
+    padding: 1%;
+    background: rgb(238, 238, 238);
+    border-radius: 25px;
+    height: 50%;
+    margin: auto;
+    position: relative;
+    border: 5px solid white;
+}
+
+div.info-container{
+    float: left;
+    width: 50%;
+}
