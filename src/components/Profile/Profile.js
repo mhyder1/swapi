@@ -8,6 +8,8 @@ import StarShip from '../StarShip/StarShip'
 import Films from '../Films/Films'
 
 
+import Grid from '@material-ui/core/Grid';
+    
 export default class Profile extends React.Component {
   constructor(props) {
     super(props);
@@ -15,35 +17,34 @@ export default class Profile extends React.Component {
     this.state = {
       characterMeta: {},
       films: {},
-      starshipData: {}
+      starshipData: {},
+      accessibilityLabels: false
     }
   }
 
   componentDidMount() {
 
     this.fetchData()
-  };  
+  };
 
-    
+
   async fetchData() {
     console.log("Async message ");
     try {
 
-      let swapi_url = "http://swapi.dev/api/people/22/";
-      //
+      let swapi_url = "https://swapi.dev/api/people/22/";
       
-     
       const response = await axios.get(swapi_url);
       //response.data.films
       const responsefilms = await axios.get(response.data.films[0]);
       const responseStarship = await axios.get(response.data.starships[0]);
 
       //setState for all keys 
-      this.setState({ 
-        ...this.state, 
-        characterMeta: response.data, 
-        films: responsefilms.data, 
-        starshipData: responseStarship.data 
+      this.setState({
+        ...this.state,
+        characterMeta: response.data,
+        films: responsefilms.data,
+        starshipData: responseStarship.data
       });
 
     } catch (e) {
@@ -54,16 +55,19 @@ export default class Profile extends React.Component {
 
   render() {
     return (
-      <div className="profile-container">
-        <h1>Profile</h1>
-        <div className="img-container" ><h1>IMAGE CONTAINER</h1></div>
-        <div className="info-container" > 
-        <CharacterMeta CharacterMetaData={this.state.characterMeta}/>
-         <StarShip starshipDataProps={this.state.starshipData} />
-         <Films  filmsData={this.state.films} />
-        </div>
+      <Grid container spacing={2} className="profile-container">
         
-      </div>
+        <Grid item xs={6}>
+        <div className="img-container"><h1>IMAGE CONTAINER</h1></div>
+        </Grid>
+        <Grid item xs={6}>
+        <div className="info-container">
+          <CharacterMeta CharacterMetaData={this.state.characterMeta} />
+          <StarShip starshipDataProps={this.state.starshipData} />
+          <Films filmsData={this.state.films} />
+        </div>
+        </Grid>
+      </Grid>
     );
   }
 }

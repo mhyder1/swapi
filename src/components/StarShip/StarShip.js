@@ -1,28 +1,17 @@
 //import './StarShip.css';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
 
 function StarShip(props) {
   return (
-    <div className="star-ship-container" style={styles.card}>
-      
+    <Card className="star-ship-container">
         <h1>StarShip</h1>
         <p>Name: { props.starshipDataProps.name}</p>
-    </div>
+    </Card>
   );
 }
 
 export default StarShip;
 
-
-const styles = {
-  card: {
-    padding: '1%',
-    background: "#eee",
-    borderRadius: '25px',
-    display: 'inlineBlock',
-    height: '50%',
-    margin: 'auto',
-    position: 'relative',
-    width: '50%',
-    border: '5px white solid'
-  }
-}
+ 
