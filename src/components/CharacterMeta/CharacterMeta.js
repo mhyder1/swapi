@@ -10,7 +10,7 @@ function CharacterMeta(props) {
         <h1>Character</h1>
         <p>Name: {props.CharacterMetaData.name}</p>
         <p> Hair Color: {props.CharacterMetaData.hair_color}</p>
-        <p> Height: {props.CharacterMetaData.height}</p>  
+        <p> Height: {props.CharacterMetaData.height} cm</p>  
     </Card>
   );
 }

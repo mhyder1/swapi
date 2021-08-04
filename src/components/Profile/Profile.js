@@ -6,20 +6,20 @@ import './Profile.css';
 import CharacterMeta from '../CharacterMeta/CharacterMeta'
 import StarShip from '../StarShip/StarShip'
 import Films from '../Films/Films'
-
+import ProfilePicture from '../ProfilePicture/ProfilePicture'
 
 import Grid from '@material-ui/core/Grid';
     
 export default class Profile extends React.Component {
   constructor(props) {
     super(props);
-
+    
     this.state = {
       characterMeta: {},
       films: {},
-      starshipData: {},
-      accessibilityLabels: false
+      starshipData: {}
     }
+ 
   }
 
   componentDidMount() {
@@ -58,12 +58,13 @@ export default class Profile extends React.Component {
       <Grid container spacing={2} className="profile-container">
         
         <Grid item xs={6}>
-        <div className="img-container"><h1>IMAGE CONTAINER</h1></div>
+        <div className="img-container"><ProfilePicture/></div>
         </Grid>
         <Grid item xs={6}>
         <div className="info-container">
+          
           <CharacterMeta CharacterMetaData={this.state.characterMeta} />
-          <StarShip starshipDataProps={this.state.starshipData} />
+          <StarShip starshipDataProps={this.state.starshipData}/>
           <Films filmsData={this.state.films} />
         </div>
         </Grid>
