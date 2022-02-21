@@ -17,6 +17,7 @@ const initialState = {
 export default function addFetchedDataReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_FETCHED_DATA:
+      console.log(action.payload);
       return {...action.payload};
     default:
       return state;

@@ -5,7 +5,8 @@ import CharacterMeta from "../CharacterMeta/CharacterMeta";
 import StarShip from "../StarShip/StarShip";
 import Films from "../Films/Films";
 import ProfilePicture from "../ProfilePicture/ProfilePicture";
-import axios from "axios";
+// import { fetchData } from "../actions";
+import axios from 'axios'
 import { connect } from "react-redux";
 import Grid from "@material-ui/core/Grid";
 
@@ -18,10 +19,10 @@ import Grid from "@material-ui/core/Grid";
 
 class Profile extends React.Component {
   componentDidMount() {
-    this.fetchData();
+    this.fetchData()
   }
 
-  async fetchData() {
+    async fetchData() {
     try {
       let swapi_url = "https://swapi.dev/api/people/22/";
 
@@ -34,11 +35,11 @@ class Profile extends React.Component {
         characterMeta: {
           name: response.data.name,
           hair_color: response.data.hair_color,
-          height: response.data.height,
-        },
-      };
+          height: response.data.height
+        }
+      }
 
-      this.props.dispatch({ type: "ADD_FETCHED_DATA", payload });
+      this.props.dispatch({type: "ADD_FETCHED_DATA", payload})
     } catch (e) {
       console.log(e);
     }
@@ -55,7 +56,7 @@ class Profile extends React.Component {
         <Grid item xs={6}>
           <div className="info-container">
             <CharacterMeta CharacterMetaData={this.props.characterMeta} />
-            <StarShip starshipDataProps={this.props.starshipData} />
+             <StarShip starshipDataProps={this.props.starshipData} />
             <Films filmsData={this.props.films} />
           </div>
         </Grid>
@@ -65,10 +66,11 @@ class Profile extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state)
   return {
     films: state.films,
     starshipData: state.starshipData,
-    characterMeta: state.characterMeta,
+    characterMeta: state.characterMeta
   };
 };
 

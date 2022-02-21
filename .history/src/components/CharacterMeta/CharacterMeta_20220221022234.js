@@ -4,6 +4,7 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 
 function CharacterMeta(props) {
+  console.log(props);
 
   return (
     <Card className="character-meta-container">

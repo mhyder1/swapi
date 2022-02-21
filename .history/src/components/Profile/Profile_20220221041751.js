@@ -5,7 +5,7 @@ import CharacterMeta from "../CharacterMeta/CharacterMeta";
 import StarShip from "../StarShip/StarShip";
 import Films from "../Films/Films";
 import ProfilePicture from "../ProfilePicture/ProfilePicture";
-import axios from "axios";
+import { fetchData } from "../actions";
 import { connect } from "react-redux";
 import Grid from "@material-ui/core/Grid";
 
@@ -18,33 +18,13 @@ import Grid from "@material-ui/core/Grid";
 
 class Profile extends React.Component {
   componentDidMount() {
-    this.fetchData();
-  }
-
-  async fetchData() {
-    try {
-      let swapi_url = "https://swapi.dev/api/people/22/";
-
-      const response = await axios.get(swapi_url);
-      const responsefilms = await axios.get(response.data.films[0]);
-      const responseStarship = await axios.get(response.data.starships[0]);
-      const payload = {
-        films: { title: responsefilms.data.title },
-        starshipData: { name: responseStarship.data.name },
-        characterMeta: {
-          name: response.data.name,
-          hair_color: response.data.hair_color,
-          height: response.data.height,
-        },
-      };
-
-      this.props.dispatch({ type: "ADD_FETCHED_DATA", payload });
-    } catch (e) {
-      console.log(e);
-    }
+    fetchData().then(data => {
+      this.props.dispatch({type: "ADD_FETCHED_DATA", payload: data})
+    })
   }
 
   render() {
+    console.log(this.props);
     return (
       <Grid container spacing={2} className="profile-container">
         <Grid item xs={6}>
@@ -55,7 +35,7 @@ class Profile extends React.Component {
         <Grid item xs={6}>
           <div className="info-container">
             <CharacterMeta CharacterMetaData={this.props.characterMeta} />
-            <StarShip starshipDataProps={this.props.starshipData} />
+            <StarShip starshipDataProps={this.state.starshipData} />
             <Films filmsData={this.props.films} />
           </div>
         </Grid>
@@ -67,8 +47,12 @@ class Profile extends React.Component {
 const mapStateToProps = (state) => {
   return {
     films: state.films,
-    starshipData: state.starshipData,
-    characterMeta: state.characterMeta,
+    starshipData: state.starships,
+    characterMeta: {
+      name: state.name,
+      hair_color: state.hair_color,
+      height: state.height,
+    },
   };
 };
 

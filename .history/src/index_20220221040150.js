@@ -10,6 +10,7 @@ import thunk from "redux-thunk";
 
 //root reducer
 import addFetchedDataReducer from "./components/reducers/addFetchedDataReducer";
+// import store from "./App/store";
 
 const store = createStore(
   addFetchedDataReducer,

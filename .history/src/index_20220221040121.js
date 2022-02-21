@@ -7,9 +7,11 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
+// import { fetchData } from "./components/actions";
 
 //root reducer
 import addFetchedDataReducer from "./components/reducers/addFetchedDataReducer";
+// import store from "./App/store";
 
 const store = createStore(
   addFetchedDataReducer,
